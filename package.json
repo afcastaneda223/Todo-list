@@ -2,9 +2,11 @@
   "name": "webpack-form",
   "version": "1.0.0",
   "description": "> This is a project to create and a to do list with js using webpack!",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack serve --open"
   },
   "repository": {
     "type": "git",
@@ -18,7 +20,12 @@
   },
   "homepage": "https://github.com/afcastaneda223/webpack-form#readme",
   "devDependencies": {
+    "html-webpack-plugin": "^5.3.2",
     "webpack": "^5.44.0",
-    "webpack-cli": "^4.7.2"
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
