@@ -9,19 +9,27 @@
 </head>
 
 <body>
-    <h1 class="text-center">To Do List</h1>
-    <div class="container p-5">
-        <form>
-            <fieldset>
-                <div class="">
-                    <input type="text" id="TextInput" class="form-control" placeholder="Add to your list...">
+    <div class="container position-absolute top-50 start-50 translate-middle">
+        <div class="card text-center">
+            <div class="card-header">
+                <h1 class="text-center">To Do List</h1>
+            </div>
+            <div class="card-body">
+                <div class="container p-5">
+                    <form>
+                        <fieldset>
+                            <div class="">
+                                <input type="text" id="TextInput" class="form-control"
+                                    placeholder="Add to your list...">
+                            </div>
+                            <ul class="list-group" id="list">
+                            </ul>
+                        </fieldset>
+                    </form>
                 </div>
-                <ul class="list-group" id="list">
-                </ul>
-            </fieldset>
-        </form>
+            </div>
+        </div>
     </div>
-
 </body>
 
 </html>
