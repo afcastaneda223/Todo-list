@@ -20,6 +20,8 @@ const b = new Task('task b');
 taskArr.push(b);
 const c = new Task('task c');
 taskArr.push(c);
+const d = new Task('task d');
+taskArr.push(d);
 
 function showArr() {
   taskContainerUl.innerHTML = ''; // reset the content to avoid acumulation
