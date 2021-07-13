@@ -1,0 +1,7 @@
+# Ignore dist folder
+
+/dist
+
+# Ignore webpack.config.js file
+
+/webpack.config.js
