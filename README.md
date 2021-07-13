@@ -26,18 +26,17 @@ This is an example of how to list things you need to use the software and how to
 -->
 
 ### Installation
-<!-- 1. Get a free API Key at [https://example.com](https://example.com) -->
 1. Clone the repo
    ```sh
-   git clone git@github.com:smunozmo/awesome-books.git
+   git clone git@github.com:afcastaneda223/webpack-form.git
    ```
 2. Install NPM packages
    ```sh
    npm install
    ```
-<!-- 4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
+   2. Start the server 
+   ```sh
+   npm start
    ```
 -->
 
