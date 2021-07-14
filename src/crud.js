@@ -11,7 +11,8 @@ function show() {
   taskArr.forEach((item) =>{
     let li = document.createElement('li');
     li.setAttribute( "class", "list-group-item d-flex justify-content-between" );
-    li.setAttribute( "id", "${taskArr[e].index}" );
+    li.setAttribute( "id", item.index );
+    li.setAttribute('draggable', true)
     let input = document.createElement('imput');
     input.setAttribute("class", "form-check-input")
     input.setAttribute("type", "form-check-input")
@@ -22,6 +23,7 @@ function show() {
     let span = document.createElement('span')
     let i = document.createElement('i')
     i.setAttribute("class", "fas fa-ellipsis-v")
+    i.setAttribute("id", "box")
     span.appendChild(i)
     li.appendChild(input)
     li.appendChild(p)
@@ -32,3 +34,4 @@ function show() {
 
 
 export { taskArr, create, show, taskContainerUl};
+

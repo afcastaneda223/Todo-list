@@ -22,21 +22,24 @@ const c = new Task('task c');
 create(c)
 
 
-function showArr() {
-  for (let e = 0; e < taskArr.length; e += 1) {
-    taskContainerUl.innerHTML += `
-    <li class="list-group-item d-flex justify-content-between" id="${taskArr[e].index}">
-    <input class="form-check-input" type="checkbox" id="FieldsetCheck">
-    <p class="m-0 p-0">"${taskArr[e].description}"</p>
-    <span><i class="fas fa-ellipsis-v"></i></span>
-</li>`;
-  }
-}
-
-
-
-console.log(taskArr)
-
-
-
+// function showArr() {
+//   for (let e = 0; e < taskArr.length; e += 1) {
+//     taskContainerUl.innerHTML += `
+//     <li class="list-group-item d-flex justify-content-between" id="${taskArr[e].index}">
+//     <input class="form-check-input" type="checkbox" id="FieldsetCheck">
+//     <p class="m-0 p-0">"${taskArr[e].description}"</p>
+//     <span><i class="fas fa-ellipsis-v"></i></span>
+// </li>`;
+//   }
+// }
 show()
+
+
+const getlistid = document.querySelectorAll('li')
+getlistid.forEach(i =>{
+  i.addEventListener('dragstart', e =>{
+    console.log('dragstart')
+  })
+})
+
+
