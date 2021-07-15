@@ -2,37 +2,32 @@
 import _ from 'lodash';
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { taskArr, create, show } from './crud.js';
+import { drag, clear } from './sort.js';
 
-const taskArr = [];
-const taskContainerUl = document.getElementById('list');
+if (localStorage.getItem('localObject') !== null) {
+  taskArr = JSON.parse(localStorage.getItem('localObject'));
+} else {
+  taskArr = [];
+}
 
 class Task {
-  constructor(description = ' ', completed = false, index = (taskArr.length + 1)) {
+  constructor(description = ' ', completed = false, index = (taskArr.length)) {
     this.description = description;
     this.completed = completed;
     this.index = index;
   }
 }
-
-const a = new Task('task a');
-taskArr.push(a);
-const b = new Task('task b');
-taskArr.push(b);
-const c = new Task('task c');
-taskArr.push(c);
-const d = new Task('task d');
-taskArr.push(d);
-
-function showArr() {
-  taskContainerUl.innerHTML = ''; // reset the content to avoid acumulation
-  for (let e = 0; e < taskArr.length; e += 1) {
-    taskContainerUl.innerHTML += `
-    <li class="list-group-item d-flex justify-content-between" id="${taskArr[e].index}">
-    <input class="form-check-input" type="checkbox" id="FieldsetCheck">
-    <p class="m-0 p-0">"${taskArr[e].description}"</p>
-    <span><i class="fas fa-ellipsis-v"></i></span>
-</li>`;
-  }
+// demo content to fill load
+if (localStorage.getItem('localObject') === null) {
+  const a = new Task('task 1');
+  create(a);
+  const b = new Task('task 2');
+  create(b);
+  const c = new Task('task 3');
+  create(c);
 }
 
-showArr(taskArr);
+show();
+drag();
+clear();
