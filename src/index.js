@@ -3,10 +3,10 @@ import _ from 'lodash';
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { taskArr, create, show} from './crud.js';
-import {drag} from './sort.js'
+import {drag, clear} from './sort.js'
 
 if (localStorage.getItem('localObject') !== null) {
-  taskArr = (JSON.parse(localStorage.getItem('localObject')))
+  taskArr = JSON.parse(localStorage.getItem('localObject'))
 } else {
   taskArr = [];
 }
@@ -26,7 +26,8 @@ const b = new Task('task b2');
 create(b)
 const c = new Task('task c3');
 create(c)
-} 
+}
 
 show()
 drag()
+clear()

@@ -19,12 +19,11 @@ function drag(){
         });
         i.addEventListener('dragend', e =>{
             i.classList.remove('bg-primary')
-          console.log(taskArr)
-          if (start != current) {
-              taskArr[start].index = current
-              taskArr[current].index = start
-              show(taskArr)
-              drag()
+            if (start != current) {
+            taskArr[start].index = current
+            taskArr[current].index = start
+            show(taskArr)
+            drag()
         }
         else{
             return -1
@@ -33,4 +32,18 @@ function drag(){
 })
 }
 
-export { drag };
+function clear(){
+    const button = document.querySelector('.btn')
+    button.addEventListener('click', e =>{
+        const check = document.querySelectorAll('#check')
+        check.forEach( i =>{
+            if (i.checked){
+                taskArr.splice(i,1)
+                show()
+            }
+    }  
+)
+}
+    )
+}
+export { drag, clear};

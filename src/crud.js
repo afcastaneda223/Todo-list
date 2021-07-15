@@ -12,7 +12,7 @@ function create(x){
 function show() {
   // this.taskArr = taskArr;
   taskContainerUl.innerHTML = '';
-  taskArr.sort(function(a, b){return a.index - b.index})
+  taskArr.sort(function(a, b){return a.index - b.index});
   taskArr.forEach((item) =>{
     let li = document.createElement('li');
     li.setAttribute( "class", "list-group-item d-flex justify-content-between zone" );
@@ -21,7 +21,7 @@ function show() {
     let input = document.createElement('input');
     input.setAttribute("class", "form-check-input")
     input.setAttribute("type", "checkbox")
-    input.setAttribute("id", "Check")
+    input.setAttribute("id", "check")
     let p = document.createElement('p')
     p.setAttribute("class", "m-0 p-0")
     p.innerText = item.description
@@ -40,7 +40,3 @@ function show() {
 
 export { taskArr, create, show, store};
 
-
-function clear(){
-  
-}
