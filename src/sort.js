@@ -7,7 +7,6 @@ function drag(){
     const getlistid = document.querySelectorAll('li')
     getlistid.forEach(i =>{
         i.addEventListener('dragstart', e =>{
-            i.classList.add('bg-primary')
             start = parseInt(i.id,10)
         });
         i.addEventListener('dragenter', e =>{
