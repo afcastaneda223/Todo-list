@@ -40,3 +40,7 @@ function show() {
 
 export { taskArr, create, show, store};
 
+
+function clear(){
+  
+}

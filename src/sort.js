@@ -1,32 +1,36 @@
-import { taskArr, create, show, taskContainerUl } from './crud.js';
+import { taskArr, show } from './crud.js';
 
-getlistid.forEach(i =>{
-    i.addEventListener('dragstart', e =>{
-      console.log('dragstart')
-    })
-    i.addEventListener('dragend', e =>{
-      console.log('dragend')
-    })
-    i.addEventListener('drag', e =>{
-      console.log('drag')
-    })
-  })
-  
-  const getlistul = document.querySelector('ul')
-  getlistul.addEventListener('dragenter', e =>{
-    console.log('dragenter')
-  });
-  getlistul.addEventListener('dragleave', e =>{
-    console.log('dragleave')
-  });
-  getlistul.addEventListener('dragover', e =>{
-    e.preventDefault();
-    console.log('dragover')
-  });
-  getlistul.addEventListener('drop', e =>{
-    console.log('drop')
-    getlistul.append('hola')
-  });
+var start = 0;
+let current = 0;
 
+function drag(){
+    const getlistid = document.querySelectorAll('li')
+    getlistid.forEach(i =>{
+        i.addEventListener('dragstart', e =>{
+            i.classList.add('bg-primary')
+            start = parseInt(i.id,10)
+        });
+        i.addEventListener('dragenter', e =>{
+            current = parseInt(i.id,10)
+            i.classList.add('bg-success')
+        });
+        i.addEventListener('dragleave', e =>{
+            i.classList.remove('bg-success')
+        });
+        i.addEventListener('dragend', e =>{
+            i.classList.remove('bg-primary')
+          console.log(taskArr)
+          if (start != current) {
+              taskArr[start].index = current
+              taskArr[current].index = start
+              show(taskArr)
+              drag()
+        }
+        else{
+            return -1
+        }
+    });
+})
+}
 
-export { getlistid};
+export { drag };

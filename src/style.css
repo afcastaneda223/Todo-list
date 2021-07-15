@@ -6,10 +6,7 @@
   background-color: black;
 }
 
-li.dragging{
+li.dragstart{
   opacity: 1;
 }
 
-li.dragging{
-  background-color: yellow;
-}
