@@ -5,3 +5,11 @@
 .body {
   background-color: black;
 }
+
+li.dragging{
+  opacity: 1;
+}
+
+li.dragging{
+  background-color: yellow;
+}
