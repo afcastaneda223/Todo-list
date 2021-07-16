@@ -33,15 +33,21 @@ function drag() {
 }
 
 function clear() {
-  const button = document.querySelector('.btn');
-  button.addEventListener('click', (e) => {
-    const check = document.querySelectorAll('#check');
-    check.forEach((i) => {
-      if (i.checked) {
-        taskArr.splice(i, 1);
-        show();
-      }
-    });
-  });
-}
+  const check = document.querySelectorAll('#check');
+  for (let i = taskArr.length-1; i >= 0; i--) {
+    if (check[i].checked) {
+        taskArr.splice(i, 1)
+    }
+  }
+  
+  for (let i = 0; i < taskArr.length; i++) {
+    taskArr[i].index = i; 
+  }
+  show()
+  drag()
+};
+
+const button = document.querySelector('.btn');
+button.addEventListener('click',clear)
+
 export { drag, clear };

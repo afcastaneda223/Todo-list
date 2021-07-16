@@ -1,6 +1,8 @@
 /* eslint-disable prefer-const */
 /* eslint-disable import/no-mutable-exports */
 
+import { drag } from "./sort";
+
 let taskArr = [];
 const taskContainerUl = document.getElementById('list');
 
@@ -12,7 +14,6 @@ function create(x) {
 }
 
 function show() {
-  // this.taskArr = taskArr;
   taskContainerUl.innerHTML = '';
   taskArr.sort((a, b) => a.index - b.index);
   taskArr.forEach((item) => {
