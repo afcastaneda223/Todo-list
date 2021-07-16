@@ -33,15 +33,5 @@ inputText.addEventListener('keypress', (e) => {
   addTask();
 })
 
-
-if (localStorage.getItem('localObject') === null) {
-  const a = new Task('task 1');
-  create(a);
-  const b = new Task('task 2');
-  create(b);
-  const c = new Task('task 3');
-  create(c);
-}
-
 show();
 drag();
