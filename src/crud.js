@@ -33,14 +33,22 @@ function show() {
     p.setAttribute('id','edit');
     p.setAttribute('contenteditable', true);
     p.innerText = item.description;
+    const span2 = document.createElement('span');
+    const i2 = document.createElement('i');
+    i2.setAttribute('class', 'as fa-trash-alt');
+    span2.appendChild(i2);
     const span = document.createElement('span');
     const i = document.createElement('i');
     i.setAttribute('class', 'fas fa-ellipsis-v');
-    i.setAttribute('id', 'box');
+    const ia = document.createElement('i');
+    ia.setAttribute('class', 'fas fa-trash-alt me-3')
+    ia.setAttribute('id', 'trash')
+    span.appendChild(ia)
     span.appendChild(i);
     li.appendChild(input);
     li.appendChild(p);
     li.appendChild(span);
+
     taskContainerUl.appendChild(li);
   });
   store(taskArr);

@@ -3,7 +3,7 @@ import _ from 'lodash';
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { taskArr, create, show, edit } from './crud.js';
-import { drag, clear } from './sort.js';
+import { drag, clear, editListen, delOne } from './sort.js';
 
 if (localStorage.getItem('localObject') !== null) {
   taskArr = JSON.parse(localStorage.getItem('localObject'));
@@ -29,18 +29,8 @@ if (localStorage.getItem('localObject') === null) {
 show();
 drag();
 clear();
-
-const getEdit = document.querySelectorAll('p');
-getEdit.forEach((e,i) => {
-  e.addEventListener('keypress', (j) => {
-    if(j.key === 'Enter'){
-      const x = e.innerText
-      edit(i, x);
-      show();
-      drag();
-    }
-  });
-});
+editListen();
+delOne();
 
 export{
   Task

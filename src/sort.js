@@ -1,8 +1,24 @@
 /* eslint-disable no-unused-vars */
-import { taskArr, show, create } from './crud.js';
+import { taskArr, show, create, edit} from './crud.js';
 
 let start = 0;
 let current = 0;
+
+
+function editListen(){
+  const getEdit = document.querySelectorAll('p');
+  getEdit.forEach((e,i) => {
+    e.addEventListener('keypress', (j) => {
+      if(j.key === 'Enter'){
+        const x = e.innerText
+        edit(i, x);
+        show();
+        drag();
+        editListen();
+      }
+    });
+  });
+}
 
 function drag() {
   const getlistid = document.querySelectorAll('li');
@@ -23,6 +39,7 @@ function drag() {
         taskArr[start].index = current;
         taskArr[current].index = start;
         show();
+        editListen();
         drag();
       }
     });
@@ -38,11 +55,27 @@ function clear() {
         taskArr.splice(i, 1);
         show();
         drag();
+        editListen();
       }
     });
   });
 }
 
+function delOne() {
+  const gettrash = document.querySelectorAll('#trash');
+  gettrash.forEach((e,i) => {
+    e.addEventListener('click', () => {
+        taskArr.splice(i, 1);
+        taskArr.forEach((x,y) => {
+          x.index = y
+        });
+        show();
+        editListen();
+        drag();
+      
+    });
+  });
+}
 
 const ti = document.querySelector('#textinput')
   ti.addEventListener('keydown', (i) => {
@@ -57,4 +90,4 @@ const ti = document.querySelector('#textinput')
 
 
 
-export { drag, clear };
+export { drag, clear, editListen, delOne };
