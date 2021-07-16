@@ -16,6 +16,10 @@ function create(x) {
 function show() {
   taskContainerUl.innerHTML = '';
   taskArr.sort((a, b) => a.index - b.index);
+  // for (let i = 0; i < taskArr.length; i++) {
+  //   taskArr[i].index = i; 
+  // }
+  store(taskArr);
   taskArr.forEach((item) => {
     const li = document.createElement('li');
     li.setAttribute('class', 'list-group-item d-flex justify-content-between zone');
@@ -27,6 +31,8 @@ function show() {
     input.setAttribute('id', 'check');
     const p = document.createElement('p');
     p.setAttribute('class', 'm-0 p-0');
+    p.setAttribute('id', 'pedit');
+    p.setAttribute('contenteditable', true);
     p.innerText = item.description;
     const span = document.createElement('span');
     const i = document.createElement('i');
@@ -37,8 +43,8 @@ function show() {
     li.appendChild(p);
     li.appendChild(span);
     taskContainerUl.appendChild(li);
+    drag()
   });
-  store(taskArr);
 }
 
 export {
