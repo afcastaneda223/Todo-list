@@ -50,11 +50,14 @@ function drag() {
 
 function clear() {
   const button = document.querySelector('.btn');
-  button.addEventListener('click', () => {
+  button.addEventListener('click', (e) => {
     const check = document.querySelectorAll('#check');
-    check.forEach((e,i) => {
-      if (e.checked) {
+    check.forEach((i) => {
+      if (i.checked) {
         taskArr.splice(i, 1);
+        taskArr.forEach((x,y) => {
+          x.index = y
+        });
         show();
         drag();
         editListen();
