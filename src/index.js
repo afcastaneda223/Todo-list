@@ -2,7 +2,7 @@
 import _ from 'lodash';
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { taskArr, create, show } from './crud.js';
+import { taskArr, create, show, edit } from './crud.js';
 import { drag, clear } from './sort.js';
 
 if (localStorage.getItem('localObject') !== null) {
@@ -20,14 +20,29 @@ class Task {
 }
 // demo content to fill load
 if (localStorage.getItem('localObject') === null) {
-  const a = new Task('task 1');
-  create(a);
-  const b = new Task('task 2');
-  create(b);
-  const c = new Task('task 3');
-  create(c);
+  create('task 1');
+  create('task 2');
+  create('task 3');
 }
+
 
 show();
 drag();
 clear();
+
+const getEdit = document.querySelectorAll('p');
+getEdit.forEach((e,i) => {
+  e.addEventListener('keypress', (j) => {
+    if(j.key === 'Enter'){
+      const x = e.innerText
+      edit(i, x);
+      show();
+      drag();
+    }
+  });
+});
+
+export{
+  Task
+}
+

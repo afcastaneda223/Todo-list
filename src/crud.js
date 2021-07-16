@@ -1,13 +1,17 @@
 /* eslint-disable prefer-const */
 /* eslint-disable import/no-mutable-exports */
-
+import { Task } from './index.js';
 let taskArr = [];
 
 function store(array) {
   localStorage.setItem('localObject', JSON.stringify(array));
 }
 function create(x) {
-  taskArr.push(x);
+  const newTask = new Task (x)
+  taskArr.push(newTask);
+}
+function edit(x,y){
+  taskArr[x].description = y
 }
 
 function show() {
@@ -26,6 +30,8 @@ function show() {
     input.setAttribute('id', 'check');
     const p = document.createElement('p');
     p.setAttribute('class', 'm-0 p-0');
+    p.setAttribute('id','edit');
+    p.setAttribute('contenteditable', true);
     p.innerText = item.description;
     const span = document.createElement('span');
     const i = document.createElement('i');
@@ -41,5 +47,5 @@ function show() {
 }
 
 export {
-  taskArr, create, show, store,
+  taskArr, create, show, store, edit
 };

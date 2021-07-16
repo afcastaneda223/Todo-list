@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { taskArr, show } from './crud.js';
+import { taskArr, show, create } from './crud.js';
 
 let start = 0;
 let current = 0;
@@ -42,6 +42,18 @@ function clear() {
     });
   });
 }
+
+
+const ti = document.querySelector('#textinput')
+  ti.addEventListener('keydown', (i) => {
+    if(i.key === 'Enter'){
+      create(ti.value);
+      show();
+      drag();
+  }})
+
+
+
 
 
 
