@@ -42,5 +42,5 @@ function show() {
 }
 
 export {
-  taskArr, create, show, store,
+  taskArr, create, show, store
 };
