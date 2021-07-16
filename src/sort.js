@@ -15,6 +15,7 @@ function editListen(){
         show();
         drag();
         editListen();
+        delOne()
       }
     });
   });
@@ -39,8 +40,9 @@ function drag() {
         taskArr[start].index = current;
         taskArr[current].index = start;
         show();
-        editListen();
         drag();
+        editListen();
+        delOne()
       }
     });
   });
@@ -56,6 +58,7 @@ function clear() {
         show();
         drag();
         editListen();
+        delOne()
       }
     });
   });
@@ -70,9 +73,9 @@ function delOne() {
           x.index = y
         });
         show();
-        editListen();
         drag();
-      
+        editListen();
+        delOne()
     });
   });
 }
@@ -83,6 +86,8 @@ const ti = document.querySelector('#textinput')
       create(ti.value);
       show();
       drag();
+      editListen();
+      delOne()
   }})
 
 
