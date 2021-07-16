@@ -6,42 +6,43 @@ let current = 0;
 
 function drag() {
   const getlistid = document.querySelectorAll('li');
-  getlistid.forEach((i) => {
-    i.addEventListener('dragstart', (e) => {
-      start = parseInt(i.id, 10);
+  getlistid.forEach((e,i) => {
+    e.addEventListener('dragstart', () => {
+      start = i;
     });
-    i.addEventListener('dragenter', (e) => {
-      current = parseInt(i.id, 10);
-      i.classList.add('bg-success');
+    e.addEventListener('dragenter', () => {
+      current = i;
+      e.classList.add('bg-success');
     });
-    i.addEventListener('dragleave', (e) => {
-      i.classList.remove('bg-success');
-      return 1;
+    e.addEventListener('dragleave', () => {
+      e.classList.remove('bg-success');
     });
-    i.addEventListener('dragend', (e) => {
-      i.classList.remove('bg-primary');
+    e.addEventListener('dragend', () => {
+      e.classList.remove('bg-primary');
       if (start !== current) {
         taskArr[start].index = current;
         taskArr[current].index = start;
-        show(taskArr);
+        show();
         drag();
-        return 1;
       }
-      return -1;
     });
   });
 }
 
 function clear() {
   const button = document.querySelector('.btn');
-  button.addEventListener('click', (e) => {
+  button.addEventListener('click', () => {
     const check = document.querySelectorAll('#check');
-    check.forEach((i) => {
-      if (i.checked) {
+    check.forEach((e,i) => {
+      if (e.checked) {
         taskArr.splice(i, 1);
         show();
+        drag();
       }
     });
   });
 }
+
+
+
 export { drag, clear };

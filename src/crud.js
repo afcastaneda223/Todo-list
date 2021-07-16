@@ -2,7 +2,6 @@
 /* eslint-disable import/no-mutable-exports */
 
 let taskArr = [];
-const taskContainerUl = document.getElementById('list');
 
 function store(array) {
   localStorage.setItem('localObject', JSON.stringify(array));
@@ -12,6 +11,7 @@ function create(x) {
 }
 
 function show() {
+  const taskContainerUl = document.getElementById('list');
   // this.taskArr = taskArr;
   taskContainerUl.innerHTML = '';
   taskArr.sort((a, b) => a.index - b.index);
