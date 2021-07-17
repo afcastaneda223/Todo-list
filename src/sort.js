@@ -1,21 +1,22 @@
-/* eslint-disable no-unused-vars */
-import { taskArr, show, create, edit} from './crud.js';
+/* eslint-disable no-use-before-define */
+import {
+  taskArr, show, create, edit,
+} from './crud.js';
 
 let start = 0;
 let current = 0;
 
-
-function editListen(){
+function editListen() {
   const getEdit = document.querySelectorAll('p');
-  getEdit.forEach((e,i) => {
+  getEdit.forEach((e, i) => {
     e.addEventListener('keypress', (j) => {
-      if(j.key === 'Enter'){
-        const x = e.innerText
+      if (j.key === 'Enter') {
+        const x = e.innerText;
         edit(i, x);
         show();
         drag();
         editListen();
-        delOne()
+        delOne();
       }
     });
   });
@@ -23,7 +24,7 @@ function editListen(){
 
 function drag() {
   const getlistid = document.querySelectorAll('li');
-  getlistid.forEach((e,i) => {
+  getlistid.forEach((e, i) => {
     e.addEventListener('dragstart', () => {
       start = i;
     });
@@ -42,7 +43,7 @@ function drag() {
         show();
         drag();
         editListen();
-        delOne()
+        delOne();
       }
     });
   });
@@ -50,18 +51,18 @@ function drag() {
 
 function clear() {
   const button = document.querySelector('.btn');
-  button.addEventListener('click', (e) => {
+  button.addEventListener('click', () => {
     const check = document.querySelectorAll('#check');
     check.forEach((i) => {
       if (i.checked) {
         taskArr.splice(i, 1);
-        taskArr.forEach((x,y) => {
-          x.index = y
+        taskArr.forEach((x, y) => {
+          x.index = y;
         });
         show();
         drag();
         editListen();
-        delOne()
+        delOne();
       }
     });
   });
@@ -69,33 +70,31 @@ function clear() {
 
 function delOne() {
   const gettrash = document.querySelectorAll('#trash');
-  gettrash.forEach((e,i) => {
+  gettrash.forEach((e, i) => {
     e.addEventListener('click', () => {
-        taskArr.splice(i, 1);
-        taskArr.forEach((x,y) => {
-          x.index = y
-        });
-        show();
-        drag();
-        editListen();
-        delOne()
+      taskArr.splice(i, 1);
+      taskArr.forEach((x, y) => {
+        x.index = y;
+      });
+      show();
+      drag();
+      editListen();
+      delOne();
     });
   });
 }
 
-const ti = document.querySelector('#textinput')
-  ti.addEventListener('keydown', (i) => {
-    if(i.key === 'Enter'){
-      create(ti.value);
-      show();
-      drag();
-      editListen();
-      delOne()
-  }})
+const ti = document.querySelector('#textinput');
+ti.addEventListener('keydown', (i) => {
+  if (i.key === 'Enter') {
+    create(ti.value);
+    show();
+    drag();
+    editListen();
+    delOne();
+  }
+});
 
-
-
-
-
-
-export { drag, clear, editListen, delOne };
+export {
+  drag, clear, editListen, delOne,
+};

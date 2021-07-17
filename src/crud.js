@@ -1,17 +1,23 @@
 /* eslint-disable prefer-const */
 /* eslint-disable import/no-mutable-exports */
-import { Task } from './index.js';
 let taskArr = [];
+class Task {
+  constructor(description = ' ', completed = false, index = (taskArr.length)) {
+    this.description = description;
+    this.completed = completed;
+    this.index = index;
+  }
+}
 
 function store(array) {
   localStorage.setItem('localObject', JSON.stringify(array));
 }
 function create(x) {
-  const newTask = new Task (x)
+  const newTask = new Task(x);
   taskArr.push(newTask);
 }
-function edit(x,y){
-  taskArr[x].description = y
+function edit(x, y) {
+  taskArr[x].description = y;
 }
 
 function show() {
@@ -30,7 +36,7 @@ function show() {
     input.setAttribute('id', 'check');
     const p = document.createElement('p');
     p.setAttribute('class', 'm-0 p-0');
-    p.setAttribute('id','edit');
+    p.setAttribute('id', 'edit');
     p.setAttribute('contenteditable', true);
     p.innerText = item.description;
     const span2 = document.createElement('span');
@@ -41,9 +47,9 @@ function show() {
     const i = document.createElement('i');
     i.setAttribute('class', 'fas fa-ellipsis-v');
     const ia = document.createElement('i');
-    ia.setAttribute('class', 'fas fa-trash-alt me-3')
-    ia.setAttribute('id', 'trash')
-    span.appendChild(ia)
+    ia.setAttribute('class', 'fas fa-trash-alt me-3');
+    ia.setAttribute('id', 'trash');
+    span.appendChild(ia);
     span.appendChild(i);
     li.appendChild(input);
     li.appendChild(p);
@@ -55,5 +61,5 @@ function show() {
 }
 
 export {
-  taskArr, create, show, store, edit
+  taskArr, create, show, store, edit,
 };

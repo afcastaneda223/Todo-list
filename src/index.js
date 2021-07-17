@@ -2,8 +2,12 @@
 import _ from 'lodash';
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { taskArr, create, show, edit } from './crud.js';
-import { drag, clear, editListen, delOne } from './sort.js';
+import {
+  taskArr, show,
+} from './crud.js';
+import {
+  drag, clear, editListen, delOne,
+} from './sort.js';
 
 if (localStorage.getItem('localObject') !== null) {
   taskArr = JSON.parse(localStorage.getItem('localObject'));
@@ -11,28 +15,8 @@ if (localStorage.getItem('localObject') !== null) {
   taskArr = [];
 }
 
-class Task {
-  constructor(description = ' ', completed = false, index = (taskArr.length)) {
-    this.description = description;
-    this.completed = completed;
-    this.index = index;
-  }
-}
-// demo content to fill load
-if (localStorage.getItem('localObject') === null) {
-  create('task 1');
-  create('task 2');
-  create('task 3');
-}
-
-
 show();
 drag();
 clear();
 editListen();
 delOne();
-
-export{
-  Task
-}
-
