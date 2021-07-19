@@ -8,7 +8,8 @@
 
 ## Live-version
 
-https://afcastaneda223.github.io/webpack-form/dist/
+[live Version](https://afcastaneda223.github.io/webpack-form/dist/)
+
 
 ## Built With
 
