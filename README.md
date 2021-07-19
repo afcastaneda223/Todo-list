@@ -3,7 +3,12 @@
 > This is a project to create and a to do list with js using webpack!
 
 
-![screenshot](./assets/img/screenshot.png)
+![screenshot](./to_do_screenshot.png)
+
+
+## Live-version
+
+https://afcastaneda223.github.io/webpack-form/dist/
 
 ## Built With
 
