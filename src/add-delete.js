@@ -14,7 +14,7 @@ function create(x) {
   return taskArr;
 }
 
-function removeTask(x){
+function removeTask(x) {
   taskArr.splice(x, 1);
   taskArr.forEach((a, b) => {
     a.index = b;

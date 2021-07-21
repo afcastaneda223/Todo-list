@@ -20,7 +20,7 @@ function edit(x, y) {
   taskArr[x].description = y;
 }
 
-function removeTask(x){
+function removeTask(x) {
   taskArr.splice(x, 1);
   taskArr.forEach((a, b) => {
     a.index = b;
@@ -68,5 +68,5 @@ function show() {
 }
 
 export {
-  taskArr, create, show, store, edit, removeTask
+  taskArr, create, show, store, edit, removeTask,
 };

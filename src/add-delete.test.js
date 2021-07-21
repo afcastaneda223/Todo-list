@@ -1,4 +1,4 @@
-import { create, removeTask } from "./add-delete";
+import { create, removeTask } from './add-delete.js';
 
 describe('Array Content', () => {
   const expected = [{
@@ -17,24 +17,24 @@ describe('Array Content', () => {
       index: 1,
       completed: false,
     }];
-    const expectedThree = [
-      {
-        description: 'walk',
-        index: 0,
-        completed: false,
-      },
-      {
-        description: 'code',
-        index: 1,
-        completed: false,
-      },
-      {
-        description: 'talk',
-        index: 2,
-        completed: false,
-      },
-    ];
-  //add testing
+  const expectedThree = [
+    {
+      description: 'walk',
+      index: 0,
+      completed: false,
+    },
+    {
+      description: 'code',
+      index: 1,
+      completed: false,
+    },
+    {
+      description: 'talk',
+      index: 2,
+      completed: false,
+    },
+  ];
+  // add testing
   it('Matches when receiving first element', () => {
     expect(create('walk')).toEqual(expected);
   });
@@ -47,8 +47,8 @@ describe('Array Content', () => {
   it('Does not match when receiving fourth element and it\'s index 0', () => {
     expect(create('read')).not.toEqual(expected);
   });
-  
-  //remove testing
+
+  // remove testing
 
   const expectedAfterRemoveOne = [
     {
@@ -79,13 +79,11 @@ describe('Array Content', () => {
       completed: false,
     },
   ];
-  
+
   it('remove array element in index: 1 and reorder index', () => {
     expect(removeTask(1)).toEqual(expectedAfterRemoveOne);
   });
   it('remove array element in index: 0 and reorder index', () => {
     expect(removeTask(0)).toEqual(expectedAfterRemovetwo);
   });
-  
 });
-
