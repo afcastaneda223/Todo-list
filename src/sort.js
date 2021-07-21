@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import {
-  taskArr, show, create, edit,
+  taskArr, show, create, edit, removeTask,
 } from './crud.js';
 
 let start = 0;
@@ -72,10 +72,7 @@ function delOne() {
   const gettrash = document.querySelectorAll('#trash');
   gettrash.forEach((e, i) => {
     e.addEventListener('click', () => {
-      taskArr.splice(i, 1);
-      taskArr.forEach((x, y) => {
-        x.index = y;
-      });
+      removeTask(i);
       show();
       drag();
       editListen();
