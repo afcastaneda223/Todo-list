@@ -46,14 +46,38 @@ This is an example of how to list things you need to use the software and how to
    ```
 -->
 
+### Testing
+1. Clone the repo
+   ```sh
+   git clone git@github.com:afcastaneda223/webpack-form.git
+   ```
+2. Install jest
+   ```sh
+   npm install --save-dev jest
+   ```
+3. Install babel
+   ```sh
+   npm install --save-dev @babel/plugin-transform-modules-commonjs
+   ```
+4. Run test
+```sh
+   nmp test
+```
+-->
+
 ## Author
 
-👤 **Author**
+👤 **Authors**
 
 **Andres Felipe Castañeda Ramos**
 - Github: [@afcastaneda223](https://github.com/afcastaneda223)
 - Twitter: [@afcastaneda](https://twitter.com/afcastaneda)
 - Linkedin: [Andres Felipe Castañeda](www.linkedin.com/in/andres-castaneda223)
+
+**Santiago Alonso Falconi Leon**
+- Github: [@alonsofl](https://github.com/alonsofl)
+- Twitter: [@alonsofalconi](https://twitter.com/alonsofalconi)
+- Linkedin: [Alonso Falconi](www.linkedin.com/in/alonsofalconi)
 
 
 ## 🤝 Contributing
