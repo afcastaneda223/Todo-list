@@ -128,8 +128,28 @@ describe('Test taskArr array content after removed  checked', () => {
       completed: false,
     },
   ];
+  const expectedTwo = [
+    {
+      description: 'code',
+      index: 2,
+      completed: true,
+    },
+    {
+      description: 'read',
+      index: 1,
+      completed: false,
+    },
+    {
+      description: 'walk',
+      index: 0,
+      completed: true,
+    },
+  ];
 
-  test('swap first for third index', () => {
+  test('removed all with completed true expect new arr only with 1 item with index updated to 0', () => {
     expect(removeChecked()).toEqual(expectedOne);
+  });
+  test('array should not have elements with completed true', () => {
+    expect(removeChecked()).not.toEqual(expectedTwo);
   });
 });
