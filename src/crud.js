@@ -38,9 +38,8 @@ function show() {
     li.setAttribute('id', item.index);
     li.setAttribute('draggable', true);
     const input = document.createElement('input');
-    input.setAttribute('class', 'form-check-input');
+    input.setAttribute('class', 'form-check-input checkbox');
     input.setAttribute('type', 'checkbox');
-    input.setAttribute('id', 'check');
     const p = document.createElement('p');
     p.setAttribute('class', 'm-0 p-0');
     p.setAttribute('id', 'edit');
@@ -61,9 +60,9 @@ function show() {
     li.appendChild(input);
     li.appendChild(p);
     li.appendChild(span);
-
     taskContainerUl.appendChild(li);
   });
+
   store(taskArr);
 }
 

@@ -1,10 +1,8 @@
 /* eslint-disable no-use-before-define */
 import {
-  taskArr, show, create, edit, removeTask,
+  taskArr, show, create, edit, removeTask, store,
 } from './crud.js';
 
-let start = 0;
-let current = 0;
 
 function editListen() {
   const getEdit = document.querySelectorAll('p');
@@ -17,12 +15,15 @@ function editListen() {
         drag();
         editListen();
         delOne();
+        checked()
       }
     });
   });
 }
 
 function drag() {
+  let start = 0;
+  let current = 0;
   const getlistid = document.querySelectorAll('li');
   getlistid.forEach((e, i) => {
     e.addEventListener('dragstart', () => {
@@ -44,27 +45,38 @@ function drag() {
         drag();
         editListen();
         delOne();
+        checked()
       }
     });
   });
 }
 
-function clear() {
-  const button = document.querySelector('.btn');
-  button.addEventListener('click', () => {
-    const check = document.querySelectorAll('#check');
-    check.forEach((i) => {
-      if (i.checked) {
-        taskArr.splice(i, 1);
-        taskArr.forEach((x, y) => {
-          x.index = y;
-        });
-        show();
-        drag();
-        editListen();
-        delOne();
+function checked() {
+  const getCheck = document.querySelectorAll('.checkbox');
+  getCheck.forEach((e, i) => {
+    e.addEventListener('click', (x) => {
+      if (e.checked) {
+        taskArr[i].completed = true
+        store(taskArr)
+        checked()
+      }
+      else{
+        taskArr[i].completed = false
+        store(taskArr)
+        checked()
       }
     });
+    
+    if (taskArr[i].completed){
+      e.setAttribute('checked',true);
+      e.parentNode.classList.add('bg-danger');
+      e.nextElementSibling.classList.add('text-decoration-line-through');
+    }
+    else{
+      e.removeAttribute('checked')
+      e.parentNode.classList.remove('bg-danger');
+      e.nextElementSibling.classList.remove('text-decoration-line-through');
+    }
   });
 }
 
@@ -77,6 +89,7 @@ function delOne() {
       drag();
       editListen();
       delOne();
+      checked()
     });
   });
 }
@@ -89,9 +102,10 @@ ti.addEventListener('keydown', (i) => {
     drag();
     editListen();
     delOne();
+    checked()
   }
 });
 
 export {
-  drag, clear, editListen, delOne,
+  drag, checked, editListen, delOne,
 };
