@@ -6,3 +6,6 @@ node_modules/
 
 # Ignore live server settings
 .vscode/settings.json
+
+# Ignore node_modules
+coverage/
