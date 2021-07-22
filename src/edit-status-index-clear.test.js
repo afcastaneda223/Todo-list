@@ -1,4 +1,6 @@
-import { edit, changeTrue, changeFalse } from "./edit-status-index-clear.js";
+import {
+  edit, changeTrue, changeFalse, changeIndex, removeChecked,
+} from './edit-status-index-clear.js';
 
 describe('Test taskArr array content after edit', () => {
   const expectedOne = {
@@ -19,15 +21,15 @@ describe('Test taskArr array content after edit', () => {
     completed: false,
   };
 
-  test('Edit first task description', () =>{
+  test('Edit first task description', () => {
     expect(edit(0, 'code')).toEqual(expectedOne);
   });
 
-  test('Edit third task description', () =>{
+  test('Edit third task description', () => {
     expect(edit(2, 'walk')).toEqual(expectedTwo);
   });
 
-  test('Shouldn\'t return same description after edit', () =>{
+  test('Shouldn\'t return same description after edit', () => {
     expect(edit(2, 'walk')).not.toEqual(expectedThree);
   });
 });
@@ -65,5 +67,69 @@ describe('Test change status true/false', () => {
 
   test('First task shouln\'t have false status after changeTrue function', () => {
     expect(changeTrue(0)).not.toEqual(expectedThree);
+  });
+});
+
+describe('Test taskArr array content after change index', () => {
+  const expectedInitial = [
+    {
+      description: 'code',
+      index: 0,
+      completed: true,
+    },
+    {
+      description: 'read',
+      index: 1,
+      completed: false,
+    },
+    {
+      description: 'walk',
+      index: 2,
+      completed: true,
+    },
+  ];
+
+  const expectedOne = [
+    {
+      description: 'code',
+      index: 2,
+      completed: true,
+    },
+    {
+      description: 'read',
+      index: 1,
+      completed: false,
+    },
+    {
+      description: 'walk',
+      index: 0,
+      completed: true,
+    },
+  ];
+
+  test('swap first for first index should not change', () => {
+    expect(changeIndex(0, 0)).toEqual(expectedInitial);
+  });
+
+  test('swap first for third index', () => {
+    expect(changeIndex(0, 2)).toEqual(expectedOne);
+  });
+
+  test('swap first for second index not equal to previous', () => {
+    expect(changeIndex(0, 1)).not.toEqual(expectedOne);
+  });
+});
+
+describe('Test taskArr array content after removed  checked', () => {
+  const expectedOne = [
+    {
+      description: 'read',
+      index: 0,
+      completed: false,
+    },
+  ];
+
+  test('swap first for third index', () => {
+    expect(removeChecked()).toEqual(expectedOne);
   });
 });

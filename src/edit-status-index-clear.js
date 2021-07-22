@@ -1,4 +1,4 @@
-const taskArr = [
+let taskArr = [
   {
     description: 'walk',
     index: 0,
@@ -31,4 +31,23 @@ function changeFalse(x) {
   return taskArr[x];
 }
 
-export { edit, changeTrue, changeFalse };
+function changeIndex(a, b) {
+  if (a !== b) {
+    const tempA = a;
+    taskArr[a].index = b;
+    taskArr[b].index = tempA;
+  }
+  return taskArr;
+}
+
+function removeChecked() {
+  taskArr = taskArr.filter((task) => task.completed === false);
+  taskArr.forEach((a, b) => {
+    a.index = b;
+  });
+  return taskArr;
+}
+
+export {
+  edit, changeTrue, changeFalse, changeIndex, removeChecked,
+};
