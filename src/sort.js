@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import {
-  taskArr, show, create, edit, removeTask, store, removeChecked,
+  taskArr, show, create, edit, removeTask, removeChecked, changeTrue, changeFalse, changeIndex,
 } from './crud.js';
 
 function editListen() {
@@ -10,11 +10,7 @@ function editListen() {
       if (j.key === 'Enter') {
         const x = e.innerText;
         edit(i, x);
-        show();
-        drag();
-        editListen();
-        delOne();
-        checked();
+        call();
       }
     });
   });
@@ -37,15 +33,8 @@ function drag() {
     });
     e.addEventListener('dragend', () => {
       e.classList.remove('bg-primary');
-      if (start !== current) {
-        taskArr[start].index = current;
-        taskArr[current].index = start;
-        show();
-        drag();
-        editListen();
-        delOne();
-        checked();
-      }
+      changeIndex(start, current);
+      call();
     });
   });
 }
@@ -55,23 +44,21 @@ function checked() {
   getCheck.forEach((e, i) => {
     e.addEventListener('click', () => {
       if (e.checked) {
-        taskArr[i].completed = true;
-        store(taskArr);
-        checked();
+        changeTrue(i);
+        call();
       } else {
-        taskArr[i].completed = false;
-        store(taskArr);
-        checked();
+        changeFalse(i);
+        call();
       }
     });
 
     if (taskArr[i].completed) {
       e.setAttribute('checked', true);
-      e.parentNode.classList.add('bg-danger');
+      e.parentNode.classList.add('text-danger');
       e.nextElementSibling.classList.add('text-decoration-line-through');
     } else {
       e.removeAttribute('checked');
-      e.parentNode.classList.remove('bg-danger');
+      e.parentNode.classList.remove('text-danger');
       e.nextElementSibling.classList.remove('text-decoration-line-through');
     }
   });
@@ -81,11 +68,7 @@ function clearBtn() {
   const getBtn = document.querySelector('.btn');
   getBtn.addEventListener('click', () => {
     removeChecked();
-    show();
-    drag();
-    editListen();
-    delOne();
-    checked();
+    call();
   });
 }
 
@@ -94,11 +77,7 @@ function delOne() {
   gettrash.forEach((e, i) => {
     e.addEventListener('click', () => {
       removeTask(i);
-      show();
-      drag();
-      editListen();
-      delOne();
-      checked();
+      call();
     });
   });
 }
@@ -107,13 +86,17 @@ const ti = document.querySelector('#textinput');
 ti.addEventListener('keydown', (i) => {
   if (i.key === 'Enter') {
     create(ti.value);
-    show();
-    drag();
-    editListen();
-    delOne();
-    checked();
+    call();
   }
 });
+
+function call() {
+  show();
+  drag();
+  editListen();
+  delOne();
+  checked();
+}
 
 export {
   drag, checked, editListen, delOne, clearBtn,

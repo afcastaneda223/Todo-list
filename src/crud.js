@@ -34,9 +34,23 @@ function removeChecked() {
   });
 }
 
+function changeTrue(x) {
+  taskArr[x].completed = true;
+}
+
+function changeFalse(x) {
+  taskArr[x].completed = false;
+}
+
+function changeIndex(a, b) {
+  if (a !== b) {
+    taskArr[a].index = b;
+    taskArr[b].index = a;
+  }
+}
+
 function show() {
   const taskContainerUl = document.getElementById('list');
-  // this.taskArr = taskArr;
   taskContainerUl.innerHTML = '';
   taskArr.sort((a, b) => a.index - b.index);
   taskArr.forEach((item) => {
@@ -69,10 +83,8 @@ function show() {
     li.appendChild(span);
     taskContainerUl.appendChild(li);
   });
-
   store(taskArr);
 }
-
 export {
-  taskArr, create, show, store, edit, removeTask, removeChecked,
+  taskArr, create, show, store, edit, removeTask, removeChecked, changeTrue, changeFalse, changeIndex,
 };
