@@ -86,5 +86,6 @@ function show() {
   store(taskArr);
 }
 export {
-  taskArr, create, show, store, edit, removeTask, removeChecked, changeTrue, changeFalse, changeIndex,
+  taskArr, create, show, store, edit, removeTask,
+  removeChecked, changeTrue, changeFalse, changeIndex,
 };
