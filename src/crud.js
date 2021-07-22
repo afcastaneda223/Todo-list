@@ -27,6 +27,15 @@ function removeTask(x) {
   });
 }
 
+function removeChecked(){
+  taskArr.forEach((e,i) =>{
+    if(e.completed){
+      removeTask(i)
+    }
+  })
+
+}
+
 function show() {
   const taskContainerUl = document.getElementById('list');
   // this.taskArr = taskArr;
@@ -67,5 +76,5 @@ function show() {
 }
 
 export {
-  taskArr, create, show, store, edit, removeTask,
+  taskArr, create, show, store, edit, removeTask, removeChecked,
 };

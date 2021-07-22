@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import {
-  taskArr, show, create, edit, removeTask, store,
+  taskArr, show, create, edit, removeTask, store, removeChecked
 } from './crud.js';
 
 
@@ -15,7 +15,7 @@ function editListen() {
         drag();
         editListen();
         delOne();
-        checked()
+        checked();
       }
     });
   });
@@ -80,6 +80,19 @@ function checked() {
   });
 }
 
+function clearBtn(){
+  const getBtn = document.querySelector('.btn')
+  getBtn.addEventListener('click', ()=>{
+    removeChecked();
+    show();
+    drag();
+    editListen();
+    delOne();
+    checked()
+  })
+
+}
+
 function delOne() {
   const gettrash = document.querySelectorAll('#trash');
   gettrash.forEach((e, i) => {
@@ -102,10 +115,10 @@ ti.addEventListener('keydown', (i) => {
     drag();
     editListen();
     delOne();
-    checked()
+    checked();
   }
 });
 
 export {
-  drag, checked, editListen, delOne,
+  drag, checked, editListen, delOne, clearBtn,
 };
