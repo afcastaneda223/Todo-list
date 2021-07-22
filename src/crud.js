@@ -27,13 +27,11 @@ function removeTask(x) {
   });
 }
 
-function removeChecked(){
-  taskArr.forEach((e,i) =>{
-    if(e.completed){
-      removeTask(i)
-    }
-  })
-
+function removeChecked() {
+  taskArr = taskArr.filter((task) => task.completed === false);
+  taskArr.forEach((a, b) => {
+    a.index = b;
+  });
 }
 
 function show() {

@@ -1,8 +1,7 @@
 /* eslint-disable no-use-before-define */
 import {
-  taskArr, show, create, edit, removeTask, store, removeChecked
+  taskArr, show, create, edit, removeTask, store, removeChecked,
 } from './crud.js';
-
 
 function editListen() {
   const getEdit = document.querySelectorAll('p');
@@ -45,7 +44,7 @@ function drag() {
         drag();
         editListen();
         delOne();
-        checked()
+        checked();
       }
     });
   });
@@ -54,43 +53,40 @@ function drag() {
 function checked() {
   const getCheck = document.querySelectorAll('.checkbox');
   getCheck.forEach((e, i) => {
-    e.addEventListener('click', (x) => {
+    e.addEventListener('click', () => {
       if (e.checked) {
-        taskArr[i].completed = true
-        store(taskArr)
-        checked()
-      }
-      else{
-        taskArr[i].completed = false
-        store(taskArr)
-        checked()
+        taskArr[i].completed = true;
+        store(taskArr);
+        checked();
+      } else {
+        taskArr[i].completed = false;
+        store(taskArr);
+        checked();
       }
     });
-    
-    if (taskArr[i].completed){
-      e.setAttribute('checked',true);
+
+    if (taskArr[i].completed) {
+      e.setAttribute('checked', true);
       e.parentNode.classList.add('bg-danger');
       e.nextElementSibling.classList.add('text-decoration-line-through');
-    }
-    else{
-      e.removeAttribute('checked')
+    } else {
+      e.removeAttribute('checked');
       e.parentNode.classList.remove('bg-danger');
       e.nextElementSibling.classList.remove('text-decoration-line-through');
     }
   });
 }
 
-function clearBtn(){
-  const getBtn = document.querySelector('.btn')
-  getBtn.addEventListener('click', ()=>{
+function clearBtn() {
+  const getBtn = document.querySelector('.btn');
+  getBtn.addEventListener('click', () => {
     removeChecked();
     show();
     drag();
     editListen();
     delOne();
-    checked()
-  })
-
+    checked();
+  });
 }
 
 function delOne() {
@@ -102,7 +98,7 @@ function delOne() {
       drag();
       editListen();
       delOne();
-      checked()
+      checked();
     });
   });
 }

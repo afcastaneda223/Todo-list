@@ -14,12 +14,11 @@ if (localStorage.getItem('localObject') !== null) {
 } else {
   taskArr = [];
 }
-window.addEventListener('load', () =>{
+window.addEventListener('load', () => {
   show();
   drag();
   checked();
   editListen();
   delOne();
   clearBtn();
-})
-
+});
