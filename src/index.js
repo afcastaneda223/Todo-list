@@ -6,7 +6,7 @@ import {
   taskArr, show,
 } from './crud.js';
 import {
-  drag, clear, editListen, delOne,
+  drag, editListen, delOne, checked, clearBtn,
 } from './sort.js';
 
 if (localStorage.getItem('localObject') !== null) {
@@ -14,9 +14,11 @@ if (localStorage.getItem('localObject') !== null) {
 } else {
   taskArr = [];
 }
-
-show();
-drag();
-clear();
-editListen();
-delOne();
+window.addEventListener('load', () => {
+  show();
+  drag();
+  checked();
+  editListen();
+  delOne();
+  clearBtn();
+});
