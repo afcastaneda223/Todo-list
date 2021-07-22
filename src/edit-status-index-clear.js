@@ -21,4 +21,14 @@ function edit(x, y) {
   return taskArr[x];
 }
 
-export { edit };
+function changeTrue(x) {
+  taskArr[x].completed = true;
+  return taskArr[x];
+}
+
+function changeFalse(x) {
+  taskArr[x].completed = false;
+  return taskArr[x];
+}
+
+export { edit, changeTrue, changeFalse };
