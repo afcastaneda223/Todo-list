@@ -8,6 +8,7 @@ function editListen() {
   getEdit.forEach((e, i) => {
     e.addEventListener('keypress', (j) => {
       if (j.key === 'Enter') {
+        j.preventDefault();
         const x = e.innerText;
         edit(i, x);
         call();
@@ -84,7 +85,7 @@ function delOne() {
 
 const ti = document.querySelector('#textinput');
 ti.addEventListener('keydown', (i) => {
-  if (i.key === 'Enter') {
+  if (i.key === 'Enter' && ti.value != '') {
     create(ti.value);
     call();
   }
