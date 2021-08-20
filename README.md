@@ -1,4 +1,4 @@
-# Webpack - Form
+# Todo List
 
 > This is a project to create and a to do list with js using webpack!
 
