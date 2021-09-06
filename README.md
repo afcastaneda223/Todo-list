@@ -8,7 +8,7 @@
 
 ## Live-version
 
-[Live Version](https://afcastaneda223.github.io/webpack-form/dist)
+[Live Version](https://todolist-afc.netlify.app/)
 
 
 ## Built With
